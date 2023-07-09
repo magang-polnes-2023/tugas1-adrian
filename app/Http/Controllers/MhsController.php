@@ -75,7 +75,9 @@ class MhsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mahasiswas = Mahasiswa::findOrFail($id);
+
+        return view('pages.mahasiswa.edit', compact('mahasiswas'));
     }
 
     /**
@@ -83,7 +85,51 @@ class MhsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // validasi form
+        $this->validate($request, [
+            'nama' => 'required',
+            'nim' => 'required',
+            'no_telp' => 'required',
+            'umur' => 'required',
+            'alamat' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'profil',
+        ]);
+
+        $mahasiswas = Mahasiswa::findOrFail($id);
+
+        if ($request->hasFile('profil')) {
+
+            $profil = $request->file('profil');
+            $profil->storeAs('public/posts', $profil->hashName());
+            
+            Storage::delete('public/posts'.$mahasiswas->profil);
+
+            $mahasiswas->update([
+                'nama' => $request->nama,
+                'nim' => $request->nim,
+                'no_telp' => $request->no_telp,
+                'umur' => $request->umur,
+                'alamat' => $request->alamat,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'profil' => $profil->hashName()
+            ]);
+
+        } else {
+            $mahasiswas->update([
+                'nama' => $request->nama,
+                'nim' => $request->nim,
+                'no_telp' => $request->no_telp,
+                'umur' => $request->umur,
+                'alamat' => $request->alamat,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+            ]);
+        }
+
+        return redirect()->route('mahasiswa.index')->with(['success' => 'Data Mahasiswa Berhasil di Update']);
     }
 
     /**

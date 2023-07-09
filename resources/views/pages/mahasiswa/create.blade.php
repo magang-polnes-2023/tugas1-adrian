@@ -32,7 +32,23 @@
                 <input type="date" name="tanggal_lahir" class="form-control" placeholder="Tanggal Lahir">
             </div>
             <div class="col">
-                <input type="text" name="jenis_kelamin" class="form-control" placeholder="Jenis Kelamin">
+                <div class="row">
+                    <label class="form-label">Jenis Kelamin</label>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault1" value="Laki-laki">
+                            <label class="form-check-label" for="flexRadioDefault1">Laki-laki</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault1" value="Perempuan">
+                            <label class="form-check-label" for="flexRadioDefault1">Perempuan</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mb-3">

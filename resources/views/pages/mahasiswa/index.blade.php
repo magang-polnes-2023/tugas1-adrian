@@ -38,7 +38,7 @@
                         <td class="align-middle">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ route('mahasiswa.show', $mhs->id) }}" type="button" class="btn btn-secondary">Detail</a>
-                                <button type="button" class="btn btn-warning">Edit</button>
+                                <a href="{{ route('mahasiswa.edit', $mhs->id) }}" type="button" class="btn btn-warning">Edit</a>
                                 <button type="button" class="btn btn-danger">Delete</button>
                             </div>
                         </td>

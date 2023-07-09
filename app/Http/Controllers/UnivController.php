@@ -66,7 +66,9 @@ class UnivController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $universitas = Universitas::findOrFail($id);
+
+        return view('pages.universitas.edit', compact('universitas'));
     }
 
     /**
@@ -74,7 +76,26 @@ class UnivController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'email' => 'required|email',
+            'akreditas' => 'required',
+        ]);
+
+        $universitas = Universitas::findOrFail($id);
+
+        $universitas->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'email' => $request->email,
+            'akreditas' => $request->akreditas,
+        ]);
+
+        //redirect ke index
+        return redirect()->route('universitas.index')->with(['success' => 'Data Universitas Berhasil Diupdate']);
     }
 
     /**
