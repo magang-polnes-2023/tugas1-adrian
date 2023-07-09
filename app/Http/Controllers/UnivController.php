@@ -48,7 +48,7 @@ class UnivController extends Controller
             'akreditas' => $request->akreditas
         ]);
 
-        return redirect()->route('universitas.index')->with(['success', 'Data Universitas Berhasil Disimpan']);
+        return redirect()->route('universitas.index')->with('success', 'Data Universitas Berhasil Disimpan');
     }
 
     /**
@@ -56,7 +56,9 @@ class UnivController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $universitas = Universitas::findOrFail($id);
+
+        return view('pages.universitas.show', compact('universitas'));
     }
 
     /**

@@ -6,9 +6,9 @@
         <a href="{{ route('universitas.create') }}" class="btn btn-primary">Masukkan Universitas</a>
     </div>
     <hr />
-    @if(Session::has('success'))
+    @if(session()->has('success'))
         <div class="alert alert-success" role="alert">
-            {{ Session::get('success')}}
+            {{ session('success') }}
         </div>
     @endif
     <table class="table table-hover">
@@ -16,7 +16,6 @@
             <tr>
                 <th>No</th>
                 <th>Universitas</th>
-                <th>Alamat</th>
                 <th>Telephone</th>
                 <th>Email</th>
                 <th>Akreditas</th>
@@ -29,13 +28,12 @@
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
                         <td class="align-middle">{{ $univ->nama }}</td>
-                        <td class="align-middle">{{ $univ->alamat }}</td>
                         <td class="align-middle">{{ $univ->no_telp }}</td>
                         <td class="align-middle">{{ $univ->email }}</td>
                         <td class="align-middle">{{ $univ->akreditas }}</td>
                         <td class="align-middle">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-secondary">Detail</button>
+                                <a href="{{ route('universitas.show', $univ->id) }}" type="button" class="btn btn-secondary">Detail</a>
                                 <button type="button" class="btn btn-warning">Edit</button>
                                 <button type="button" class="btn btn-danger">Delete</button>
                             </div>
@@ -49,4 +47,5 @@
             @endif
         </tbody>
     </table>
+    {{ $universitas->onEachSide(1)->links() }}
 @endsection

@@ -65,7 +65,9 @@ class MhsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $mahasiswas = Mahasiswa::findOrFail($id);
+
+        return view('pages.mahasiswa.show', compact('mahasiswas'));
     }
 
     /**
