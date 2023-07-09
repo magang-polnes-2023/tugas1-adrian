@@ -137,6 +137,12 @@ class MhsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mahasiswas = Mahasiswa::findOrFail($id);
+
+        Storage::delete('public/posts'. $mahasiswas->profil);
+
+        $mahasiswas->delete();
+
+        return redirect()->route('mahasiswa.index')-> with(['success' => 'Data Mahasiswa Berhasil di Hapus']);
     }
 }

@@ -103,6 +103,10 @@ class UnivController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $universitas = Universitas::findOrFail($id);
+
+        $universitas->delete();
+
+        return redirect()->route('universitas.index')-> with(['success' => 'Data Universitas Berhasil di Hapus']);
     }
 }

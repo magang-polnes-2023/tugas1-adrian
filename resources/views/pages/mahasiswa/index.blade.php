@@ -39,7 +39,11 @@
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ route('mahasiswa.show', $mhs->id) }}" type="button" class="btn btn-secondary">Detail</a>
                                 <a href="{{ route('mahasiswa.edit', $mhs->id) }}" type="button" class="btn btn-warning">Edit</a>
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <form class="btn btn-danger p-0" onsubmit="return confirm('Apakah Anda Yakin Menghapus Data Mahasiswa Terpilih?');" action="{{ route('mahasiswa.destroy', $mhs->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-0">Delete</button>
+                                </form>
                             </div>
                         </td>
                     </tr>

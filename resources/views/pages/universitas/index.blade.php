@@ -34,8 +34,12 @@
                         <td class="align-middle">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ route('universitas.show', $univ->id) }}" type="button" class="btn btn-secondary">Detail</a>
-                                <a href="{{ route('universitas.edit', $univ->id) }}" type="button" class="btn btn-sm btn-warning">Edit</a>
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <a href="{{ route('universitas.edit', $univ->id) }}" type="button" class="btn btn-warning">Edit</a>
+                                <form class="btn btn-danger p-0" onsubmit="return confirm('Apakah Anda Yakin Menghapus Data Universitas Terpilih?');" action="{{ route('universitas.destroy', $univ->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger m-0">Delete</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
