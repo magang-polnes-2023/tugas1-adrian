@@ -33,8 +33,35 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <label class="form-label">Akreditas</label>
-                <input type="text" name="akreditas" class="form-control" value="{{ $universitas->akreditas }}" placeholder="Akreditas Universitas">
+                <div class="row">
+                    <label class="form-label">Akreditasi</label>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="akreditas" id="flexRadioDefault1" value="A" {{ $universitas->akreditas == 'A' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="flexRadioDefault1">A</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="akreditas" id="flexRadioDefault1" value="B" {{ $universitas->akreditas == 'B' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="flexRadioDefault1">B</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="akreditas" id="flexRadioDefault1" value="C" {{ $universitas->akreditas == 'C' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="flexRadioDefault1">C</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

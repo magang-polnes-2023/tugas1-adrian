@@ -16,6 +16,16 @@
         </div>
         <div class="row mb-3">
             <div class="col">
+                <div class="form-label">Pilih Universitas</div>
+                <select class="form-control select" name="universitas_id" id="universitas_id"> 
+                    @foreach ($univ as $univ)
+                        <option value="{{ $univ->id }}">{{ $univ->nama }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
                 <input type="number" name="no_telp" class="form-control" placeholder="Telephone">
             </div>
             <div class="col">

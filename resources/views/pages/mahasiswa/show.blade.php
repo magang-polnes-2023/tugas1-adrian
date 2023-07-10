@@ -21,6 +21,11 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
+                    <div class="form-label">Pilih Universitas</div>
+                    <input type="text" name="universitas_id" class="form-control" value="{{ $mahasiswas->universitas->nama }}" placeholder="Universitas" readonly>
+                </div>
+            <div class="row mb-3">
+                <div class="col">
                     <label class="form-label">NIM</label>
                     <input type="number" name="nim" class="form-control" value="{{ $mahasiswas->nim }}" placeholder="NIM" readonly>
                 </div>

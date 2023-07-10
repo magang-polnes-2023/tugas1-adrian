@@ -27,6 +27,18 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col">
+                        <div class="form-label">Pilih Universitas</div>
+                        <select class="form-control select" name="universitas_id" id="universitas_id"> 
+                            @foreach ($univ as $univ)
+                                <option value="{{ $univ->id }}" {{ $univ->id == $mahasiswas->universitas_id ? 'selected' : '' }}>
+                                    {{ $univ->nama }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
                         <label class="form-label">NIM</label>
                         <input type="number" name="nim" class="form-control" value="{{ $mahasiswas->nim }}" placeholder="NIM">
                     </div>

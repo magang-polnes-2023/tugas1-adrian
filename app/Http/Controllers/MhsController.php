@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Models\Universitas;
 use Illuminate\Support\Facades\Storage;
 
 class MhsController extends Controller
@@ -14,7 +15,7 @@ class MhsController extends Controller
      */
     public function index()
     {
-        $mahasiswas = Mahasiswa::latest()->paginate(5);
+        $mahasiswas = Mahasiswa::with('universitas')->latest()->paginate(5);
         return view('pages.mahasiswa.index', compact('mahasiswas'));
     }
 
@@ -23,7 +24,9 @@ class MhsController extends Controller
      */
     public function create()
     {
-        return view('pages.mahasiswa.create');
+        $univ = Universitas::all();
+
+        return view('pages.mahasiswa.create', compact('univ'));
     }
 
     /**
@@ -33,6 +36,7 @@ class MhsController extends Controller
     {
         // validasi form
         $this->validate($request, [
+            'universitas_id' => 'required',
             'nama' => 'required',
             'nim' => 'required',
             'no_telp' => 'required',
@@ -47,6 +51,7 @@ class MhsController extends Controller
         $profil->storeAs('public/posts', $profil->hashName());
 
         Mahasiswa::create([
+            'universitas_id' => $request->universitas_id,
             'nama' => $request->nama,
             'nim' => $request->nim,
             'no_telp' => $request->no_telp,
@@ -66,8 +71,9 @@ class MhsController extends Controller
     public function show(string $id)
     {
         $mahasiswas = Mahasiswa::findOrFail($id);
+        $univ = Universitas::all();
 
-        return view('pages.mahasiswa.show', compact('mahasiswas'));
+        return view('pages.mahasiswa.show', compact('mahasiswas', 'univ'));
     }
 
     /**
@@ -76,8 +82,9 @@ class MhsController extends Controller
     public function edit(string $id)
     {
         $mahasiswas = Mahasiswa::findOrFail($id);
+        $univ = Universitas::all();
 
-        return view('pages.mahasiswa.edit', compact('mahasiswas'));
+        return view('pages.mahasiswa.edit', compact('mahasiswas', 'univ'));
     }
 
     /**
@@ -87,6 +94,7 @@ class MhsController extends Controller
     {
         // validasi form
         $this->validate($request, [
+            'universitas_id' => 'required',
             'nama' => 'required',
             'nim' => 'required',
             'no_telp' => 'required',
@@ -107,6 +115,7 @@ class MhsController extends Controller
             Storage::delete('public/posts'.$mahasiswas->profil);
 
             $mahasiswas->update([
+                'universitas_id' => $request->universitas_id,
                 'nama' => $request->nama,
                 'nim' => $request->nim,
                 'no_telp' => $request->no_telp,
@@ -119,6 +128,7 @@ class MhsController extends Controller
 
         } else {
             $mahasiswas->update([
+                'universitas_id' => $request->universitas_id,
                 'nama' => $request->nama,
                 'nim' => $request->nim,
                 'no_telp' => $request->no_telp,

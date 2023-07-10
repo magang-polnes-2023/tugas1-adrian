@@ -26,7 +26,35 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input type="text" name="akreditas" class="form-control" placeholder="Akreditas Universitas">
+                <div class="row">
+                    <label class="form-label">Akreditasi</label>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="akreditas" id="flexRadioDefault1" value="A">
+                                <label class="form-check-label" for="flexRadioDefault1">A</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="akreditas" id="flexRadioDefault1" value="B">
+                                <label class="form-check-label" for="flexRadioDefault1">B</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="akreditas" id="flexRadioDefault1" value="C">
+                                <label class="form-check-label" for="flexRadioDefault1">C</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

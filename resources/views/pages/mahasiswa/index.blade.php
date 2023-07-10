@@ -18,8 +18,7 @@
                 <th>Profil</th>
                 <th>Nama</th>
                 <th>NIM</th>
-                <th>Telp.</th>
-                <th>Jenis Kelamin</th>
+                <th>Universitas</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -33,8 +32,7 @@
                         </td>
                         <td class="align-middle">{{ $mhs->nama }}</td>
                         <td class="align-middle">{{ $mhs->nim }}</td>
-                        <td class="align-middle">{{ $mhs->no_telp }}</td>
-                        <td class="align-middle">{{ $mhs->jenis_kelamin }}</td>
+                        <td class="align-middle">{{ $mhs->universitas->nama }}</td>
                         <td class="align-middle">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ route('mahasiswa.show', $mhs->id) }}" type="button" class="btn btn-secondary">Detail</a>
@@ -50,7 +48,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td class="text-center" colspan="6">Data Mahasiswa Tidak Ada</td>
+                    <td class="text-center" colspan="7">Data Mahasiswa Tidak Ada</td>
                 </tr>
             @endif
         </tbody>
